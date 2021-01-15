@@ -171,19 +171,47 @@ $(".card .list-group").sortable({
   tolerance: "pointer",
   helper: "clone",
   activate: function(event) {
-    console.log("activate",this);
+    // console.log("~~~~~ activate ~~~~~")
+    // console.log(this);
   },
   deactivate: function(event) {
-    console.log("deactivate", this);
+    // console.log("~~~~~ deactivate ~~~~~")
+    // console.log(this);
   },
   over: function(event) {
-    console.log("over",event.target);
+    // console.log("~~~~~ over ~~~~~")
+    // console.log(event.target);
   },
   out: function(event) {
-    console.log("out",event.target);
+    // console.log("~~~~~ out ~~~~~")
+    // console.log(event.target);
   },
   update: function(event) {
-    console.log("update", this);
+    // array to store the task data in
+    var tempArr = [];
+    // loop over current set of children in sortable list
+    $(this).children().each(function() {
+      var text = $(this)
+        .find("p")
+        .text()
+        .trim();
+      var date = $(this)
+        .find("span")
+        .text()
+        .trim();
+      // add task data to the temp array as an object
+      tempArr.push({
+        text: text,
+        date: date
+      });
+    });
+    // trim down list's id to match object property
+    var arrName = $(this)
+      .attr("id")
+      .replace("list-","");
+    // update array on tasks object and save
+    tasks[arrName] = tempArr;
+    saveTasks();
   }
 });
 
