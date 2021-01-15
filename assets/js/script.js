@@ -165,9 +165,10 @@ $(".list-group").on("blur", "input[type='text']", function() {
 //~~~~~EDIT TASK END~~~~~
 
 //~~~~~DRAG AND DROP START~~~~~
+// sortable widget https://api.jqueryui.com/sortable/
 $(".card .list-group").sortable({
   connectWith: $(".card .list-group"),
-  scroll: false,
+  scroll: true,
   tolerance: "pointer",
   helper: "clone",
   activate: function(event) {
@@ -212,6 +213,21 @@ $(".card .list-group").sortable({
     // update array on tasks object and save
     tasks[arrName] = tempArr;
     saveTasks();
+  }
+});
+
+// droppable widget https://api.jqueryui.com/droppable/
+$("#trash").droppable({
+  accept: ".card .list-group-item",
+  tolerance: "touch",
+  drop: function(event, ui) {
+    ui.draggable.remove();
+  },
+  over: function(event, ui) {
+    console.log("over");
+  },
+  out: function(event, ui) {
+    console.log("out");
   }
 });
 
