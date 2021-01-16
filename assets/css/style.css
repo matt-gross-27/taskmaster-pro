@@ -10,14 +10,6 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Staatliches", sans-serif;
 }
 
-/* 
---breakpoint-xs: 0;
---breakpoint-sm: 576px;
---breakpoint-md: 768px;
---breakpoint-lg: 992px;
---breakpoint-xl: 1200px; 
-*/
-
 .dropover {
   background-color: rgba(0, 0, 0, 0.3);
   transition: .5s;
@@ -68,16 +60,28 @@ h1, h2, h3, h4, h5, h6 {
   background-position: 1px -50px;
 }
 
-
-
-/* button style */
-
-
+/* MEDIA 
+--breakpoint-xs: 0;
+--breakpoint-sm: 576px;
+--breakpoint-md: 768px;
+--breakpoint-lg: 992px;
+--breakpoint-xl: 1200px; 
+*/
 
 /* Media Query for header height */
 @media screen and (min-width: 768px) and (max-width: 991px){
   header{
     height: 188px;
     /* margin-bottom: 15px; */
+  }
+}
+
+/* ON MOBILE MEDIA Qs */
+@media screen and (min-width: 576px) {
+  header.col-12 {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1020;
   }
 }

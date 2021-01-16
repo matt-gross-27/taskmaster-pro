@@ -175,9 +175,11 @@ $(".list-group").on("change", "input[type='text']", function() {
 // sortable widget https://api.jqueryui.com/sortable/
 $(".card .list-group").sortable({
   connectWith: $(".card .list-group"),
-  scroll: false,
   tolerance: "pointer",
   helper: "clone",
+  scrollSensitivity: 10,
+  scrollSpeed: 10,
+  containment: $("main"),
   activate: function() {
     $(this).addClass("dropover")
     $(".bottom-trash").addClass("bottom-trash-drag")
